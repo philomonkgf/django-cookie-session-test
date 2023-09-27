@@ -1,0 +1,31 @@
+{%extends 'new/layout.html'%}
+
+{%block body%}
+
+ <h1>Hello  {{request.user.email}}</h1>
+<a href="{% url 'logoutview'%}"><button>logout</button></a>
+
+<div id="outer">
+ {% for task in tasks%}
+
+ <div id="inner">
+
+<div>{{task.taskname|upper}}</div>
+<div><img src="{{task.taskimage.url}}" width="300px" height="300px"></div>
+<div>{{task.abouttask}}</div>
+<div>{{task.taskcreate}}</div>
+<div>{{task.taskedit}}</div>
+<div>{{task.taskusername.email}}</div><br>
+<a href="{% url 'taskview' task.id %}"><button>View</button></a>
+<a href="{% url 'taskedit' task.id %}"><button>Edit</button></a>
+<a href="{% url 'taskdelete' task.id %}"><button>DELETE</button></a>
+
+</div>
+ {% endfor%}
+
+</div>
+
+
+
+
+{%endblock%}

@@ -1,0 +1,36 @@
+{%extends 'new/layout.html'%}
+{%block body%}
+<h1> {{task.taskname}}</h1>
+<img src="{{task.taskimage.url}}" width="500px" height="500px">
+<p> {{task.abouttask}}</p>
+<h5> {{task.taskcreate}}</h5>
+<h5> {{task.taskedit}}</h5>
+<h5> {{task.taskusername.email}}</h5>
+
+<h1> cookies get name {{name}} </h1>
+<h1> session  get name {{sess}} </h1>
+
+
+<h5>request.session.get_session_cookie_age :-{{request.session.get_session_cookie_age}}</h5>
+
+<h5>request.session.get_expiry_age :-{{request.session.get_expiry_age}}</h5>
+<h5>request.session.get_expiry_date :-{{request.session.get_expiry_date}}</h5>
+<h5>request.session.get_expire_at_browser_close :-{{request.session.get_expire_at_browser_close}}</h5>
+
+<h3>Key</h3>
+{%for key in request.session.keys%}
+
+<li>{{key}}</li>
+
+{%endfor%}
+
+<h3>ltems</h3>
+{%for item in request.session.items%}
+
+<li>{{item}}</li>
+
+{%endfor%}
+
+
+
+{%endblock%}
