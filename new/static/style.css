@@ -15,3 +15,14 @@ h1{
     display: flex;
     flex-wrap: wrap;
 }
+
+
+#navbar{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+    gap: 20px;
+    align-items: center;
+  
+}

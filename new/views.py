@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import PasswordChangeForm
-
+from django.db.models import Q
 
 
 from .models import Task
@@ -14,9 +14,13 @@ from.forms import Taskform,signup_form,user_edit
 
 @login_required(login_url='loginview')
 def index(request):
-    tasks = Task.objects.all()
+    q = request.GET.get('q')
+    if q:
+        tasks = Task.objects.filter(Q(taskname__contains=q)|Q(taskname__icontains=q))
+    else:
+        tasks = Task.objects.all().order_by('-taskcreate')
     request.session['sname'] = request.user.email
-    reponse= render(request,'new/index.html',{'tasks':tasks})
+    reponse = render(request,'new/index.html',{'tasks':tasks})
     reponse.set_cookie('name',request.user.name)
     return reponse
 

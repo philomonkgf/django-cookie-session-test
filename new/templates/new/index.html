@@ -2,8 +2,24 @@
 
 {%block body%}
 
- <h1>Hello  {{request.user.email}}</h1>
-<a href="{% url 'logoutview'%}"><button>logout</button></a>
+
+<div id="navbar">
+    
+    <div><h1>Hello  {{request.user.email}}</h1></div>
+
+   <div><a href="{% url 'logoutview'%}"><button>logout</button></a></div>
+   <div><a href="{% url 'addtask'%}"><button>Addtask</button></a></div>
+   <div><a href="{% url 'passwordchange'%}"><button>Change Password</button></a></div>
+   <div><a href="{% url 'useredit'%}"><button>User Edit</button></a></div>
+
+   <form method="Get">
+    <input type="search" placeholder="search task" name="q">
+    <input type="submit">
+    
+   </form>
+
+
+</div>
 
 <div id="outer">
  {% for task in tasks%}
