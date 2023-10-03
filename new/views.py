@@ -52,7 +52,7 @@ def task_delete(request,ids):
     return redirect ('index')
 
 
-@login_required(login_url='loginview')
+# @login_required(login_url='loginview')
 def add_task(request):
     form = Taskform()
     if request.method =='POST':
@@ -96,7 +96,7 @@ def logout_view(request):
     return redirect('loginview')
 
 
-
+@login_required(login_url='loginview')
 def useredit(request):
     form = user_edit(instance = request.user)
     if request.method == "POST":
@@ -109,6 +109,7 @@ def useredit(request):
     return render(request,'new/useredit.html',{'form':form})
 
 
+@login_required(login_url='loginview')
 def password_charge(request):
     if request.method == "POST":
         form = PasswordChangeForm(data=request.POST,user=request.user)
