@@ -9,6 +9,8 @@ class Taskform(forms.ModelForm):
         model = Task
         fields = ['taskname','taskimage','abouttask',]
 
+        
+
 class signup_form(UserCreationForm):
     class Meta:
         model = Newuser
